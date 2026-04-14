@@ -1,0 +1,74 @@
+EMAIL VALIDATION 
+email = input("Enter email: ")
+
+if "@" in email and "." in email:
+    print("Valid email")
+else:
+    print("Invalid email")
+
+
+PASSWORD VALIDATION
+
+
+password = input("Enter password: ")
+
+upper = 0
+digit = 0
+special = 0
+
+for ch in password:
+    if ch.isupper():
+        upper = 1
+    elif ch.isdigit():
+        digit = 1
+    elif ch in "@#$%!":
+        special = 1
+
+if len(password) >= 8 and upper == 1 and digit == 1 and special == 1:
+    print("Valid password")
+else:
+    print("Invalid password")
+
+
+MENU CARD 
+
+menu = {
+    "idli": 30,
+    "dosa": 50,
+    "pongal": 40,
+    "tea": 10,
+    "coffee": 15
+}
+
+print("---- Welcome to Our Restaurant ----")
+print("Menu Card")
+for item in menu:
+    print(item, "-", menu[item], "rupees")
+
+total = 0
+
+while True:
+    choice = input("Enter item name: ").lower()
+
+    if choice in menu:
+        qty = int(input("Enter quantity: "))
+        cost = menu[choice] * qty
+        total = total + cost
+        print("Item added. Cost =", cost)
+    else:
+        print("Item not available")
+
+    more = input("Do you want to order more? (yes/no): ")
+    if more == "no":
+        break
+
+gst_rate = 0.05
+gst_amount = total * gst_rate
+final_amount = total + gst_amount
+
+print("----------------------------------")
+print("Bill Details")
+print("Total Amount :", total, "rupees")
+print("GST (5%)     :", gst_amount, "rupees")
+print("Final Amount :", final_amount, "rupees")
+print("Thank you! Visit again 😊")
